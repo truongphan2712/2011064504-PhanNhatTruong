@@ -46,9 +46,9 @@ public class CategoryController {
     @PostMapping("/edit/{id}")
     public String updateCategory(@PathVariable(value = "id") Long id, @Valid @ModelAttribute("categories") Category cateUpdate, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()){
-            return "redirect:/categories/edit/" + id;
+            return "redirect:categories/edit" + id;
         }
-        categoryService.updateCategory(cateUpdate);
+        categoryService.saveCategory(cateUpdate);
         return "redirect:/categories";
     }
     @GetMapping("/delete/{id}")
